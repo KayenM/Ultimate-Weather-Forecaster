@@ -9,17 +9,17 @@ weatherApp.config(function($routeProvider){
     $routeProvider
     
     .when('/', {
-        templateUrl: 'pages/home.htm',  //relative html file
+        templateUrl: 'home.htm',  //relative html file
         controller: 'homeController'
     })
     
     .when('/forecast', {
-        templateUrl: 'pages/forecast.htm',
+        templateUrl: 'forecast.htm',
         controller: 'forecastController'
     })
     
     .when('/forecast/:daysForecasted', {  //route to get how many days we want to forecast, appends the amount of days to the url
-        templateUrl: 'pages/forecast.htm',
+        templateUrl: 'forecast.htm',
         controller: 'forecastController'
     })
 });
