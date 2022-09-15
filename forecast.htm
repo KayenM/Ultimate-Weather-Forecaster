@@ -1,0 +1,31 @@
+<!-- this is the page that will be imported to the index.html body page after the user "get's the forecast", it displays the forecast of the city entered -->
+<p><a href="#/">Back To Search</a></p>
+
+<h1>Forecast for {{ city }}</h1>
+<hr/>
+Select How Many Days You Want to Forecast: 
+<a href="#/forecast/2" ng-class="{'bold_text': daysForecasted === '2'}">2</a> | 
+<a href="#/forecast/5" ng-class="{'bold_text': daysForecasted === '5'}">5</a> | 
+<a href="#/forecast/10" ng-class="{'bold_text': daysForecasted === '10'}">10</a> 
+<!-- takes user to the forecast page again put with the new amount of days shown. ng-class adds css class that makes red the number of the forecast we are on -->
+
+<hr/>
+
+<div ng-repeat="weather in weatherResult.forecast.forecastday">  <!-- Use the repeat module to repeat the same div on the screen for each element in a given array, the JSON file has an array with each days forecast data located in forecast.forcastday-->
+    <div class="row">
+        <div class="col-md-12">
+            <div class="panel panel-default">
+                <div class="panel-heading text-center">
+                    <h3 class="panel-title bold_text">{{ weather.date | date: 'MMM d, y'}}    <img src="{{ weather.day.condition.icon }}"></h3>  <!--output the date as a heading of each temperature (we format it) and the image of the weather that day-->
+                </div>
+                
+                <div>Condition: {{ weather.day.condition.text }}</div>
+                <div>Peak Temperature {{ weather.day.maxtemp_c }}°C</div>
+                <div>Average Temperature {{ weather.day.avgtemp_c }}°C</div>
+                <div>Lowest Temperature {{ weather.day.mintemp_c }}°C</div>
+
+            </div>
+        </div>
+    </div>
+</div> 
+    
